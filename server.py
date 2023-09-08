@@ -5,7 +5,6 @@ from utils import get_twitter_score
 
 from pydantic import BaseModel
 
-
 import uvicorn
 
 import pandas as pd 
@@ -24,7 +23,7 @@ app.add_middleware(
 class single_respond(BaseModel):
     user_name : str
 
-@app.post("/single_respond/")
+@app.post("/score_respond/")
 async def single_respond(item: single_respond):
     respond = get_twitter_score(item.user_name)
     print(respond)
@@ -33,6 +32,5 @@ async def single_respond(item: single_respond):
     
 
 if __name__ == "__main__":
-    if not os.path.exists('./documents'):
-        os.makedirs('./documents')
+    
     uvicorn.run(app, host="0.0.0.0", port=8000)

@@ -32,5 +32,8 @@ def get_twitter_score(user_name:str):
     print(f"user.listed_count: {user.listed_count}")
     print(f"user.statuses_count: {user.statuses_count}")
 
-    return user.followers_count
+    return user.followers_count, user.listed_count, user.statuses_count
+
+def generate_proof(features : list):
+
 
