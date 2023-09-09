@@ -27,13 +27,8 @@ def get_twitter_score(user_name:str):
     #user = api.get_user(id = _id)
     user =api.get_user(screen_name = user_name)
 
-    # Get user Twitter statistics
-    print(f"user.followers_count: {user.followers_count}")
-    print(f"user.listed_count: {user.listed_count}")
-    print(f"user.statuses_count: {user.statuses_count}")
-
-    return user.followers_count, user.listed_count, user.statuses_count
+    return [user.followers_count, user.listed_count, user.statuses_count]
 
 def generate_proof(features : list):
-
+    return "aaa"
 

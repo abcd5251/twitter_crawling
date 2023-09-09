@@ -1,7 +1,7 @@
 import os
 from fastapi import FastAPI, Request, Depends
 from fastapi.middleware.cors import CORSMiddleware
-from utils import get_twitter_score
+from utils import get_twitter_score, generate_proof
 
 from pydantic import BaseModel
 
@@ -25,8 +25,9 @@ class single_respond(BaseModel):
 
 @app.post("/score_respond/")
 async def single_respond(item: single_respond):
-    respond = get_twitter_score(item.user_name)
-    print(respond)
+    features = get_twitter_score(item.user_name)
+    print(features)
+    respond = generate_proof(features)
     return {"code":0, "data":respond}
 
     
